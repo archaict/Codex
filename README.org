@@ -1,2 +1,71 @@
-# Codex
+* Codex
 
+Can you feel the dotfiles in the air?
+
+* Installation
+
+For new Fedora based system, I move here from Arch Linux and Nixos. This dotfiles should also help with installation itself.
+
+** Bad Installation Speed?
+
+Speed of package installation are somewhat slow, it is probably known, but this will be sufficient.
+
+#+begin_src shell
+# for now at least
+
+[ /etc/dnf/dnf.conf ]
+
+[main]
+gpgcheck=1
+installonly_limit=10                # Fedora limit break?
+clean_requirements_on_remove=True
+best=False
+skip_if_unavailable=True
+fastestmirror=True                  # Another one!
+
+
+
+
+#+end_src
+
+** Repair Tap-To-Click
+
+Location: /etc/X11/xorg.conf.d/99-synaptics-overrides.conf
+
+#+begin_src conf
+Section  "InputClass"
+    Identifier  "touchpad overrides"
+    # This makes this snippet apply to any device with the "synaptics" driver
+    # assigned
+    MatchDriver  "synaptics"
+
+    ####################################
+    ## The lines that you need to add ##
+    # Enable left mouse button by tapping
+    Option  "TapButton1"  "1"
+    # Enable vertical scrolling
+    Option  "VertEdgeScroll"  "1"
+    # Enable right mouse button by tapping lower right corner
+    Option "RBCornerButton" "3"
+    ####################################
+
+EndSection
+#+end_src
+
+
+
+
+
+
+** Not Too Independent
+
+#+begin_src shell
+$ sudo dnf install gnome-tweaks \
+                   kitty zsh \
+                   emacs libvterm\
+                   qtile i3 \
+
+$ git clone https://github.com/archaict/Codex
+
+
+#+end_src
