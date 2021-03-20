@@ -22,10 +22,6 @@ clean_requirements_on_remove=True
 best=False
 skip_if_unavailable=True
 fastestmirror=True                  # Another one!
-
-
-
-
 #+end_src
 
 ** Repair Tap-To-Click
@@ -53,19 +49,25 @@ EndSection
 #+end_src
 
 
-
-
-
-
 ** Not Too Independent
 
 #+begin_src shell
+# TODO COPR!
+# $ sudo dnf copr enable
+$ sudo dnf copr enable zirix/gdm-wallpaper peterwu/iosevka
+
 $ sudo dnf install gnome-tweaks \
+                   git \
                    kitty zsh \
-                   emacs libvterm\
-                   qtile i3 \
+                   nvim emacs libvterm libtool cmake\
+                   qtile i3 spectrwm\
 
 $ git clone https://github.com/archaict/Codex
+#+end_src
 
+** Desktop
+
+#+begin_src shell
+sudo dnf install gnome-shell-extension-pop-shell gdm-wallpaper
 
 #+end_src
